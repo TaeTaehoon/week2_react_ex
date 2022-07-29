@@ -1,23 +1,44 @@
 import React from "react";
 import styled from "styled-components";
 import TodoCard from "./TodoCard";
+import { useSelector } from "react-redux";
 
 function Contents({ children }) {
+  const todoList = useSelector((state) => state.todoAction.list); // 추가해주세요.
+  console.log(todoList);
   return (
     <WrapStyled>
       <h1>오늘도 달려봐요!</h1>
       <CardListStyled>
-        <TodoCard />
-        <TodoCard />
-        <TodoCard />
-        <TodoCard />
-        <TodoCard />
+        {todoList.map((todo) => {
+          if (todo.isDone === false) {
+            return (
+              <TodoCard
+                todo={todo}
+                key={todo.id}
+                title={todo.title}
+                desc={todo.description}
+                isDone={todo.isDone}
+              />
+            );
+          }
+        })}
       </CardListStyled>
       <h1>수고하셨습니다!</h1>
       <CardListStyled>
-        <TodoCard />
-        <TodoCard />
-        <TodoCard />
+        {todoList.map((todo) => {
+          if (todo.isDone === true) {
+            return (
+              <TodoCard
+                todo={todo}
+                key={todo.id}
+                title={todo.title}
+                desc={todo.description}
+                isDone={todo.isDone}
+              />
+            );
+          }
+        })}
       </CardListStyled>
     </WrapStyled>
   );
