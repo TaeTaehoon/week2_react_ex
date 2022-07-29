@@ -4,8 +4,9 @@ import TodoCard from "./TodoCard";
 import { useSelector } from "react-redux";
 
 function Contents({ children }) {
+  const test = useSelector((state) => state);
+  console.log(test);
   const todoList = useSelector((state) => state.todoAction.list); // 추가해주세요.
-  console.log(todoList);
   return (
     <WrapStyled>
       <h1>오늘도 달려봐요!</h1>

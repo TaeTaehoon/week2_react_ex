@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { toggleTodo, deleteTodo } from "./Redux/modules/todos";
+import { Link } from "react-router-dom";
 
 function TodoCard(props) {
   const removeBtn = useRef();
@@ -25,7 +26,10 @@ function TodoCard(props) {
   });
   return (
     <CardStyled>
-      <button>+</button>
+      <Link to={`/detail/${props.todo.id}`}>
+        <button>+</button>
+      </Link>
+
       <h3>{props.title}</h3>
       <span>{props.desc}</span>
       <button ref={removeBtn}>삭제</button>
@@ -44,11 +48,20 @@ const CardStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  button:nth-of-type(1) {
+  a {
     top: -8px;
     right: -8px;
     position: absolute;
-    border-radius: 50%;
+
+    button {
+      width: 30px;
+      padding: 0;
+      height: 30px;
+      font-size: 20px;
+
+      border-radius: 50%;
+      border: 3.8px solid green;
+    }
   }
   h3 {
     width: 95%;
