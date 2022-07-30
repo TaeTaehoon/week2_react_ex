@@ -51,13 +51,15 @@ const WrapStyled = styled.div`
   display: flex;
   flex-direction: column;
   h1 {
+    color: #fa86c1;
     letter-spacing: 0.2rem;
   }
 `;
 const CardListStyled = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
+  padding-bottom: 15px;
 `;
 
 export default Contents;

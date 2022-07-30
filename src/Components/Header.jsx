@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { createTodo } from "./Redux/modules/todos";
+import { createTodo } from "../Redux/modules/todos";
 
 function Header() {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ function Header() {
     <HeaderStyled>
       <div>What's your TODO</div>
       <SubmitFormStyled ref={formRef}>
-        <label>제목</label>
+        <label>Title</label>
         <input
           type="text"
           onChange={onChange}
@@ -45,7 +45,7 @@ function Header() {
           value={input.title}
           required
         />
-        <label>내용</label>
+        <label>Description</label>
         <input
           type="text"
           onChange={onChange}
@@ -53,23 +53,29 @@ function Header() {
           value={input.desc}
           required
         />
-        <button>드가자~!</button>
+        <button>Commit!</button>
       </SubmitFormStyled>
     </HeaderStyled>
   );
 }
 
 const HeaderStyled = styled.header`
+  color: #fa86c1;
   position: relative;
-  width: 100%;
+  width: 99%;
   height: 170px;
-  background-color: beige;
+  border: 6px solid #fa86c1;
+  box-shadow: 0px 0px 12px 3px #fa86c1, inset 0px 0px 6px 3px #fa86c1;
+  border-radius: 25px;
+  background: none;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   div {
-    font-size: 2rem;
+    font-size: 2.3rem;
+    font-weight: 600;
     text-align: center;
+    text-shadow: 0px 0px 12px #fa86c1;
   }
 `;
 
@@ -84,9 +90,10 @@ const SubmitFormStyled = styled.form`
     width: 15rem;
     margin-left: 10px;
     border: none;
-    background-color: beige;
-    border-bottom: 2px solid pink;
-    box-shadow: 0px 6px 7px -5.5px pink;
+    background: none;
+    border-bottom: 2px solid #fa86c1;
+    box-shadow: 0px 6px 7px -5.5px #fa86c1;
+    color: #8ac1e7;
 
     :focus {
       outline: none;
@@ -95,16 +102,22 @@ const SubmitFormStyled = styled.form`
 
   button {
     position: absolute;
-    right: 20px;
+    right: 25px;
+    bottom: 22px;
     width: 220px;
     font-size: 1.5rem;
     padding: 5px 10px;
-    border: 3px solid pink;
+    border: 3px solid #8ac1e7;
     border-radius: 10px;
-    font-weight: bold;
-    color: pink;
+    font-weight: 600;
+    color: #8ac1e7;
     background: none;
-    box-shadow: 0px 0px 4px 1px pink;
+    box-shadow: 0px 0px 12px 3px #8ac1e7, inset 0px 0px 6px 3px #8ac1e7;
+    cursor: pointer;
+
+    :focus {
+      transform: scale(0.98);
+    }
   }
 `;
 export default Header;

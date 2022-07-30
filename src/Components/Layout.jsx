@@ -9,9 +9,11 @@ const LayoutStyled = styled.div`
   width: 1200px;
   max-width: 95%;
   min-width: 800px;
-
-  background-color: #eee;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #122138;
   margin: 0 auto;
+  margin-top: 20px;
 `;
 
 export default Layout;

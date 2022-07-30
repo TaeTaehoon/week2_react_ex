@@ -1,7 +1,7 @@
 import { Route, Routes, useParams, Link } from "react-router-dom";
-import Layout from "./Layout";
-import Header from "./Header";
-import Contents from "./MainContainer";
+import Layout from "./Components/Layout";
+import Header from "./Components/Header";
+import Contents from "./Components/MainContainer";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
@@ -24,7 +24,30 @@ function App() {
 const WrapStyled = styled.div`
   width: 600px;
   height: 400px;
+  border: 6px solid #fa86c1;
+  box-shadow: 0px 0px 12px 3px #fa86c1, inset 0px 0px 6px 3px #fa86c1;
+  padding: 20px;
+  color: #fa86c1;
+  border-radius: 25px;
   margin: 200px auto;
+  button {
+    width: 70px;
+    height: 30px;
+    border: 3px solid #fa86c1;
+    border-radius: 8px;
+    background: none;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px 2px #fa86c1, inset 0px 0px 5px 2px #fa86c1;
+    cursor: pointer;
+    :focus {
+      transform: scale(0.96);
+    }
+
+    a {
+      color: #fa86c1;
+      text-decoration: none;
+    }
+  }
 `;
 
 const DetailPage = () => {
