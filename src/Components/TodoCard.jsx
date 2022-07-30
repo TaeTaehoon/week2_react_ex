@@ -15,12 +15,14 @@ function TodoCard(props) {
     dispatch(toggleTodo(props.todo));
   };
   useEffect(() => {
-    removeBtn.current.addEventListener("click", removeTodo);
-    toggleBtn.current.addEventListener("click", toggleEvent);
+    const rmBtn = removeBtn.current;
+    const tgBtn = toggleBtn.current;
+    rmBtn.addEventListener("click", removeTodo);
+    tgBtn.addEventListener("click", toggleEvent);
     return () => {
-      if (removeBtn.current !== null || toggleBtn.current !== null) {
-        removeBtn.current.removeEventListener("click", removeTodo);
-        toggleBtn.current.removeEventListener("click", toggleEvent);
+      if (rmBtn !== null || tgBtn !== null) {
+        rmBtn.removeEventListener("click", removeTodo);
+        tgBtn.removeEventListener("click", toggleEvent);
       }
     };
   });

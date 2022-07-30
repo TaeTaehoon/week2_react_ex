@@ -23,6 +23,7 @@ function Contents({ children }) {
               />
             );
           }
+          return null;
         })}
       </CardListStyled>
       <h1>수고하셨습니다!</h1>
@@ -39,6 +40,7 @@ function Contents({ children }) {
               />
             );
           }
+          return null;
         })}
       </CardListStyled>
     </WrapStyled>
