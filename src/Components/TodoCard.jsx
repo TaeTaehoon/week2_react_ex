@@ -64,6 +64,8 @@ const CardStyled = styled.div`
       font-size: 20px;
       color: #8ac1e7;
       background-color: #122138;
+      border: 3.8px solid #8ac1e7;
+      box-shadow: 0px 0px 6px 2px #8ac1e7, inset 0px 0px 3.5px 1px #8ac1e7;
       border-radius: 50%;
       border: 3.8px solid #8ac1e7;
       cursor: pointer;

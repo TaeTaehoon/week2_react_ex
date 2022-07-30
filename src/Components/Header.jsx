@@ -73,9 +73,10 @@ const HeaderStyled = styled.header`
   justify-content: space-evenly;
   div {
     font-size: 2.3rem;
+    letter-spacing: 0.3rem;
     font-weight: 600;
     text-align: center;
-    text-shadow: 0px 0px 12px #fa86c1;
+    text-shadow: 0px 0px 16px #fa86c1;
   }
 `;
 

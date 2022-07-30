@@ -24,7 +24,7 @@ function App() {
 const WrapStyled = styled.div`
   width: 600px;
   height: 400px;
-  border: 6px solid #fa86c1;
+  border: 6px solid pi;
   box-shadow: 0px 0px 12px 3px #fa86c1, inset 0px 0px 6px 3px #fa86c1;
   padding: 20px;
   color: #fa86c1;

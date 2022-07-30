@@ -51,7 +51,8 @@ const WrapStyled = styled.div`
   display: flex;
   flex-direction: column;
   h1 {
-    color: #fa86c1;
+    color: yellow;
+    text-shadow: 0px 0px 16px yellow;
     letter-spacing: 0.2rem;
   }
 `;
