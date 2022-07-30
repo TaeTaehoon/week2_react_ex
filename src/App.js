@@ -31,8 +31,9 @@ const WrapStyled = styled.div`
   border-radius: 25px;
   margin: 200px auto;
   button {
-    width: 70px;
-    height: 30px;
+    width: 100px;
+    height: 40px;
+    font-size: 1.2rem;
     border: 3px solid #fa86c1;
     border-radius: 8px;
     background: none;
@@ -53,11 +54,13 @@ const WrapStyled = styled.div`
 const DetailPage = () => {
   const todoList = useSelector((state) => state.todoAction.list);
   const { index } = useParams();
+  const todo = todoList.find((todo) => todo.id === parseInt(index));
 
   return (
     <WrapStyled>
-      <h2>{todoList[index].title}</h2>
-      <p>{todoList[index].description}</p>
+      <h3>id: {todo.id}</h3>
+      <h2>{todo.title}</h2>
+      <p>{todo.description}</p>
 
       <button>
         <Link to="/">뒤로가기</Link>
