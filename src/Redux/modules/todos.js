@@ -2,6 +2,7 @@
 const CREATE = "todo/CREATE";
 const DELETE = "todo/DELETE";
 const TOGGLE = "todo/TOGGLE";
+const DETAIL = "todo/DETAIL_BY_ID";
 // 초기 상태값
 const initialState = {
   list: [
@@ -24,48 +25,66 @@ const initialState = {
       isDone: true,
     },
   ],
+  todo: {
+    id: 0,
+    title: "",
+    description: "",
+    isDone: false,
+  },
 };
 
 //액션 생성 함수
-export function createTodo(todo) {
-  return { type: CREATE, todo };
+export function createTodo(payload) {
+  return { type: CREATE, payload };
 }
 
-export function deleteTodo(todo) {
-  return { type: DELETE, todo };
+export function deleteTodo(payload) {
+  return { type: DELETE, payload };
 }
 
-export function toggleTodo(todo) {
-  return { type: TOGGLE, todo };
+export function toggleTodo(payload) {
+  return { type: TOGGLE, payload };
+}
+
+export function getTodoDetail(payload) {
+  return { type: DETAIL, payload };
 }
 
 // 리듀서
 const todoAction = (state = initialState, action) => {
   switch (action.type) {
-    case "todo/CREATE": {
+    case CREATE: {
       //위에 상수형을 왜 선언했니! 하하하ㅏ하 ㄱ거 갖다써라
       const todo = {
         id: state.list.at(-1).id + 1,
-        title: action.todo.title,
-        description: action.todo.desc,
+        title: action.payload.title,
+        description: action.payload.desc,
         isDone: false,
       };
       const newList = [...state.list].concat(todo);
-      return { list: newList };
+      return { ...state, list: newList };
     }
 
-    case "todo/DELETE": {
+    case DELETE: {
       const newList = [...state.list].filter(
-        (todo) => todo.id !== parseInt(action.todo.id)
+        (todo) => todo.id !== parseInt(action.payload.id)
       );
-      return { list: newList };
+      return { ...state, list: newList };
     }
 
-    case "todo/TOGGLE": {
+    case TOGGLE: {
       const newList = [...state.list].map((todo) =>
-        todo.id === action.todo.id ? { ...todo, isDone: !todo.isDone } : todo
+        todo.id === action.payload.id ? { ...todo, isDone: !todo.isDone } : todo
       );
-      return { list: newList };
+      return { ...state, list: newList };
+    }
+
+    case DETAIL: {
+      const newTodo = [...state.list].find(
+        (todo) => todo.id === parseInt(action.payload)
+      );
+      console.log(newTodo);
+      return { ...state, todo: newTodo };
     }
 
     default:

@@ -7,7 +7,7 @@ function Layout({ children }) {
 
 const LayoutStyled = styled.div`
   width: 1200px;
-  max-width: 95%;
+  max-width: 97%;
   min-width: 800px;
   min-height: 100vh;
   height: 100%;

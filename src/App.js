@@ -3,7 +3,9 @@ import Layout from "./Components/Layout";
 import Header from "./Components/Header";
 import Contents from "./Components/MainContainer";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getTodoDetail } from "./Redux/modules/todos";
+import { useEffect } from "react";
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
           </Layout>
         }
       />
-      <Route path="/detail/:index" element={<DetailPage />} />
+      <Route path="/detail/:id" element={<DetailPage />} />
     </Routes>
   );
 }
@@ -51,22 +53,26 @@ const WrapStyled = styled.div`
   }
 `;
 
-const DetailPage = () => {
-  const todoList = useSelector((state) => state.todoAction.list);
-  const { index } = useParams();
-  const todo = todoList.find((todo) => todo.id === parseInt(index));
+function DetailPage() {
+  const dispatch = useDispatch();
+  const todoDetail = useSelector((state) => state.todoAction.todo);
+
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(getTodoDetail(id));
+  }, [dispatch, id]);
 
   return (
     <WrapStyled>
-      <h3>id: {todo.id}</h3>
-      <h2>{todo.title}</h2>
-      <p>{todo.description}</p>
+      <h3>id: {todoDetail.id}</h3>
+      <h2>{todoDetail.title}</h2>
+      <p>{todoDetail.description}</p>
 
       <button>
         <Link to="/">뒤로가기</Link>
       </button>
     </WrapStyled>
   );
-};
+}
 
 export default App;

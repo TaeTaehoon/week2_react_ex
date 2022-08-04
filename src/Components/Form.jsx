@@ -41,45 +41,50 @@ function Form() {
   });
   return (
     <SubmitFormStyled ref={formRef}>
-      <label>Title</label>
-      <input
-        type="text"
-        onChange={onChange}
-        name="title"
-        value={input.title}
-        required
-      />
-      <label>Description</label>
-      <input
-        type="text"
-        onChange={onChange}
-        name="desc"
-        value={input.desc}
-        required
-      />
+      <span>
+        <label>Title</label>
+        <input
+          type="text"
+          onChange={onChange}
+          name="title"
+          value={input.title}
+          required
+        />
+        <label>Description</label>
+        <input
+          type="text"
+          onChange={onChange}
+          name="desc"
+          value={input.desc}
+          required
+        />
+      </span>
+
       <button>Commit!</button>
     </SubmitFormStyled>
   );
 }
 
 const SubmitFormStyled = styled.form`
-  label {
-    font-size: 1.8rem;
-    letter-spacing: 0.1rem;
-    padding: 0 0 0 20px;
-  }
-  input {
-    font-size: 1.8rem;
-    width: 15rem;
-    margin-left: 10px;
-    border: none;
-    background: none;
-    border-bottom: 2px solid #fa86c1;
-    box-shadow: 0px 6px 7px -5.5px #fa86c1;
-    color: #8ac1e7;
+  span {
+    label {
+      font-size: 1.8rem;
+      letter-spacing: 0.1rem;
+      padding: 0 0 0 20px;
+    }
+    input {
+      font-size: 1.8rem;
+      width: 15rem;
+      margin-left: 10px;
+      border: none;
+      background: none;
+      border-bottom: 2px solid #fa86c1;
+      box-shadow: 0px 6px 7px -5.5px #fa86c1;
+      color: #8ac1e7;
 
-    :focus {
-      outline: none;
+      :focus {
+        outline: none;
+      }
     }
   }
 
@@ -100,6 +105,18 @@ const SubmitFormStyled = styled.form`
 
     :focus {
       transform: scale(0.98);
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+      width: 400px;
+      margin-top: 20px;
+      position: unset;
+      font-size: 1.6rem;
+      letter-spacing: 0.4rem;
     }
   }
 `;

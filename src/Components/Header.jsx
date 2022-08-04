@@ -30,6 +30,10 @@ const HeaderStyled = styled.header`
     text-align: center;
     text-shadow: 0px 0px 16px #fa86c1;
   }
+
+  @media screen and (max-width: 1050px) {
+    height: 220px;
+  }
 `;
 
 export default Header;
