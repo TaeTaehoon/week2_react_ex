@@ -4,22 +4,22 @@ import TodoCard from "./TodoCard";
 import { useSelector } from "react-redux";
 
 function Contents({ children }) {
-  const test = useSelector((state) => state);
-  console.log(test);
   const todoList = useSelector((state) => state.todoAction.list); // 추가해주세요.
   return (
     <WrapStyled>
       <h1>오늘도 달려봐요!</h1>
       <CardListStyled>
         {todoList.map((todo) => {
+          const { id, title, description, isDone } = todo;
+          //filter로 통합해보자잇
           if (todo.isDone === false) {
             return (
               <TodoCard
                 todo={todo}
-                key={todo.id}
-                title={todo.title}
-                desc={todo.description}
-                isDone={todo.isDone}
+                key={id}
+                title={title}
+                desc={description}
+                isDone={isDone}
               />
             );
           }

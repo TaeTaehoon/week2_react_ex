@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-  useContext,
-} from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { createTodo } from "../Redux/modules/todos";
@@ -15,10 +9,13 @@ function Form() {
     title: "",
     desc: "",
   });
-  const onChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setInput({ ...input, [name]: value });
-  });
+  const onChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setInput({ ...input, [name]: value });
+    },
+    [input]
+  );
   // const onChange = (e) => {
   //   const { name, value } = e.target;
   //   console.log(name, value);
@@ -27,6 +24,7 @@ function Form() {
   // }; //todos에 넣기 위해 input 두개의 값을 묶어서 inputs의 [name]과 key가 같은 요소에 value를 대입시킴.
 
   const formRef = useRef(null);
+
   const submitAction = (e) => {
     e.preventDefault();
     dispatch(createTodo(input));
@@ -35,11 +33,10 @@ function Form() {
   };
 
   useEffect(() => {
-    formRef.current.addEventListener("submit", submitAction);
+    const submitForm = formRef.current;
+    submitForm.addEventListener("submit", submitAction);
     return () => {
-      if (formRef.current !== null) {
-        formRef.current.removeEventListener("submit", submitAction);
-      }
+      submitForm?.removeEventListener("submit", submitAction);
     };
   });
   return (

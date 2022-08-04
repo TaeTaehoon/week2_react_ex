@@ -4,15 +4,15 @@ import styled from "styled-components";
 import { toggleTodo, deleteTodo } from "../Redux/modules/todos";
 import { Link } from "react-router-dom";
 
-function TodoCard(props) {
+function TodoCard({ todo, isDone, title, desc }) {
   const removeBtn = useRef();
   const toggleBtn = useRef();
   const dispatch = useDispatch();
   const removeTodo = () => {
-    dispatch(deleteTodo(props.todo));
+    dispatch(deleteTodo(todo));
   };
   const toggleEvent = () => {
-    dispatch(toggleTodo(props.todo));
+    dispatch(toggleTodo(todo));
   };
   useEffect(() => {
     const rmBtn = removeBtn.current;
@@ -20,23 +20,22 @@ function TodoCard(props) {
     rmBtn.addEventListener("click", removeTodo);
     tgBtn.addEventListener("click", toggleEvent);
     return () => {
-      if (rmBtn !== null || tgBtn !== null) {
-        rmBtn.removeEventListener("click", removeTodo);
-        tgBtn.removeEventListener("click", toggleEvent);
-      }
+      rmBtn?.removeEventListener("click", removeTodo);
+      tgBtn?.removeEventListener("click", toggleEvent);
     };
   });
+  //옵셔널 체이닝 ?:
   return (
     <CardStyled>
-      <Link to={`/detail/${props.todo.id}`}>
+      <Link to={`/detail/${todo.id}`}>
         <button>+</button>
       </Link>
 
-      <h3>{props.title}</h3>
-      <span>{props.desc}</span>
+      <h3>{title}</h3>
+      <span>{desc}</span>
       <div>
         <button ref={removeBtn}>삭제</button>
-        <button ref={toggleBtn}>{props.isDone ? "취소" : "완료"}</button>
+        <button ref={toggleBtn}>{isDone ? "취소" : "완료"}</button>
       </div>
     </CardStyled>
   );

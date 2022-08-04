@@ -43,6 +43,7 @@ export function toggleTodo(todo) {
 const todoAction = (state = initialState, action) => {
   switch (action.type) {
     case "todo/CREATE": {
+      //위에 상수형을 왜 선언했니! 하하하ㅏ하 ㄱ거 갖다써라
       const todo = {
         id: state.list.at(-1).id + 1,
         title: action.todo.title,
